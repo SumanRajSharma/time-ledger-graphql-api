@@ -17,16 +17,14 @@ This is the backend for the Time Ledger application, a tool designed to help ind
 
 1. Clone the repository:
 
-   \`\`\`bash
-   git clone https://github.com/your-username/time-ledger-api.git
+   ```bash
+   git clone https://github.com/SumanRajSharma/time-ledger-graphql-api.git
    cd time-ledger-api
-   \`\`\`
 
 2. Install the dependencies:
 
-   \`\`\`bash
-   npm install
-   \`\`\`
+     ```bash
+     npm install
 
 3. Set up environment variables (see [Environment Variables](#environment-variables)).
 
@@ -34,9 +32,8 @@ This is the backend for the Time Ledger application, a tool designed to help ind
 
 1. Start the server:
 
-   \`\`\`bash
+   ```bash
    npm start
-   \`\`\`
 
 2. The server will run on \`http://localhost:4000\`.
 
@@ -78,10 +75,9 @@ The API has the following main types and endpoints:
 
 Create a \`.env\` file in the root directory of your project and add the following environment variables:
 
-\`\`\`env
-MONGO_DB=<your_mongo_db_connection_string>
-JWT_SECRET=<your_jwt_secret>
-\`\`\`
+      ```env
+      MONGO_DB=<your_mongo_db_connection_string>
+      JWT_SECRET=<your_jwt_secret>
 
 ## Docker Setup
 
@@ -89,15 +85,15 @@ To build and run the project using Docker, follow these steps:
 
 1. Build the Docker image:
 
-   \`\`\`bash
+   ```
    docker build -t time-ledger-api .
-   \`\`\`
+
 
 2. Run the Docker container:
 
-   \`\`\`bash
+   ```bash
    docker run -p 4000:4000 time-ledger-api
-   \`\`\`
+
 
 ## Contributing
 
