@@ -75,7 +75,7 @@ The API has the following main types and endpoints:
 
 Create a \`.env\` file in the root directory of your project and add the following environment variables:
 
-      ```bash
+      ```bash   
       MONGO_DB=<your_mongo_db_connection_string>
       JWT_SECRET=<your_jwt_secret>
 
@@ -88,12 +88,10 @@ To build and run the project using Docker, follow these steps:
    ```
    docker build -t time-ledger-api .
 
-
 2. Run the Docker container:
 
    ```bash
    docker run -p 4000:4000 time-ledger-api
-
 
 ## Contributing
 
