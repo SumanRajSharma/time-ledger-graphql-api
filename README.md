@@ -1,3 +1,4 @@
+
 # Time Ledger GraphQL API
 
 This is the backend for the Time Ledger application, a tool designed to help independent disability workers track their hours based on their clients and generate invoices to send to the respective party. The backend is built using Node.js, MongoDB, and GraphQL.
@@ -16,88 +17,96 @@ This is the backend for the Time Ledger application, a tool designed to help ind
 
 1. Clone the repository:
 
-   ```bash
+   \`\`\`bash
    git clone https://github.com/your-username/time-ledger-api.git
-   cd time-ledger-api```
+   cd time-ledger-api
+   \`\`\`
 
 2. Install the dependencies:
 
-bash
-Copy code
-npm install
-Set up environment variables (see Environment Variables).
+   \`\`\`bash
+   npm install
+   \`\`\`
 
-Usage
-Start the server:
+3. Set up environment variables (see [Environment Variables](#environment-variables)).
 
-bash
-Copy code
-npm start
-The server will run on http://localhost:4000.
+## Usage
 
-API Endpoints
+1. Start the server:
+
+   \`\`\`bash
+   npm start
+   \`\`\`
+
+2. The server will run on \`http://localhost:4000\`.
+
+## API Endpoints
+
 The API has the following main types and endpoints:
 
-User
+- **User**
+  - \`Query\`:
+    - \`me\`: Get the current user
+  - \`Mutation\`:
+    - \`createUser(userInput: UserInput): User!\`
+    - \`updateUser(update: UserUpdateInput!): User\`
+    - \`login(email: String!, password: String!): AuthData\`
+    - \`logout(token: String!): Boolean\`
+    - \`requestPasswordReset(email: String!): Boolean\`
+    - \`resetPassword(resetToken: String!, newPassword: String!): Boolean\`
 
-Query:
-me: Get the current user
-Mutation:
-createUser(userInput: UserInput): User!
-updateUser(update: UserUpdateInput!): User
-login(email: String!, password: String!): AuthData
-logout(token: String!): Boolean
-requestPasswordReset(email: String!): Boolean
-resetPassword(resetToken: String!, newPassword: String!): Boolean
-Client
+- **Client**
+  - \`Query\`:
+    - \`getClients: [Client!]!\`
+    - \`getClient(id: ID!): Client\`
+  - \`Mutation\`:
+    - \`createClient(name: String!, address: String!, participant_name: String!, participant_number: String!, care_type: [CareTypeInput!]!, rate: RateInput): Client\`
+    - \`updateClient(id: ID!, name: String, address: String, participant_name: String, participant_number: String, care_type: [CareTypeInput!], rate: RateInput): Client\`
+    - \`deleteClient(id: ID!): DeleteClientPayload!\`
 
-Query:
-getClients: [Client!]!
-getClient(id: ID!): Client
-Mutation:
-createClient(name: String!, address: String!, participant_name: String!, participant_number: String!, care_type: [CareTypeInput!]!, rate: RateInput): Client
-updateClient(id: ID!, name: String, address: String, participant_name: String, participant_number: String, care_type: [CareTypeInput!], rate: RateInput): Client
-deleteClient(id: ID!): DeleteClientPayload!
-Invoice
+- **Invoice**
+  - \`Query\`:
+    - \`getInvoice(id: ID!): Invoice\`
+    - \`getInvoices: [Invoice!]!\`
+  - \`Mutation\`:
+    - \`createInvoice(input: CreateInvoiceInput!): Invoice\`
+    - \`updateInvoice(id: ID!, input: UpdateInvoiceInput!): Invoice\`
+    - \`updateInvoiceDay(id: ID!, dayName: String!, dayData: DayInput!): Invoice\`
+    - \`deleteInvoice(id: ID!): Boolean\`
 
-Query:
-getInvoice(id: ID!): Invoice
-getInvoices: [Invoice!]!
-Mutation:
-createInvoice(input: CreateInvoiceInput!): Invoice
-updateInvoice(id: ID!, input: UpdateInvoiceInput!): Invoice
-updateInvoiceDay(id: ID!, dayName: String!, dayData: DayInput!): Invoice
-deleteInvoice(id: ID!): Boolean
-Environment Variables
-Create a .env file in the root directory of your project and add the following environment variables:
+## Environment Variables
 
-env
-Copy code
+Create a \`.env\` file in the root directory of your project and add the following environment variables:
+
+\`\`\`env
 MONGO_DB=<your_mongo_db_connection_string>
 JWT_SECRET=<your_jwt_secret>
-Docker Setup
+\`\`\`
+
+## Docker Setup
+
 To build and run the project using Docker, follow these steps:
 
-Build the Docker image:
+1. Build the Docker image:
 
-bash
-Copy code
-docker build -t time-ledger-api .
-Run the Docker container:
+   \`\`\`bash
+   docker build -t time-ledger-api .
+   \`\`\`
 
-bash
-Copy code
-docker run -p 4000:4000 time-ledger-api
-Contributing
-Fork the repository.
-Create a new branch (git checkout -b feature/your-feature).
-Commit your changes (git commit -m 'Add some feature').
-Push to the branch (git push origin feature/your-feature).
-Open a pull request.
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+2. Run the Docker container:
 
-css
-Copy code
+   \`\`\`bash
+   docker run -p 4000:4000 time-ledger-api
+   \`\`\`
 
-You can save the above content in a file named `README.md` in your project's root directory.
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch (\`git checkout -b feature/your-feature\`).
+3. Commit your changes (\`git commit -m 'Add some feature'\`).
+4. Push to the branch (\`git push origin feature/your-feature\`).
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
