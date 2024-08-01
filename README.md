@@ -75,7 +75,7 @@ The API has the following main types and endpoints:
 
 Create a \`.env\` file in the root directory of your project and add the following environment variables:
 
-      ```env
+      ```bash
       MONGO_DB=<your_mongo_db_connection_string>
       JWT_SECRET=<your_jwt_secret>
 
