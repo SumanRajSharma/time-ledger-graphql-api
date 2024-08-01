@@ -95,8 +95,6 @@ bower_components/
 .sass-cache/
 
 # Docker
-Dockerfile
-docker-compose.yml
 .dockerignore
 
 # Misc
